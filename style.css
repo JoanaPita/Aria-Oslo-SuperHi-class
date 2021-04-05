@@ -1,6 +1,13 @@
+:root {
+  --color-bg: #fcfaf7;
+  --color-text: #312429;
+  --color-text-selected: #f38ab5;
+  --color-bg-accent: #b9d1fb;
+}
+
 * {
-  font-family: "Roboto", sans-serif;
-  color: #f8f8f8;
+  font-family: "Open Sans", sans-serif;
+  color: var(--color-text);
   padding: 0;
   margin: 0;
   text-decoration: none;
@@ -10,7 +17,7 @@
 
 body {
   margin: 80px auto 48px auto;
-  background-color: #15171a;
+  background-color: var(--color-bg);
   width: 1120px;
 }
 
@@ -21,14 +28,20 @@ header {
   justify-content: space-between;
 }
 
-svg {
-  width: 8rem;
+.logo {
+  width: 8em;
 }
 
 h1,
 nav {
   font-family: "Josefin Sans", sans-serif;
-  font-size: 40px;
+  font-size: 36px;
+  font-weight: 600;
+}
+
+h1 {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 36px;
   font-weight: 600;
 }
 
@@ -44,11 +57,18 @@ a {
   font-size: 24px;
   margin: 0 0 0 32px;
   transition: color 0.3s;
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: 600;
+  font-size: 1em;
+  /* text-transform: uppercase; */
 }
 
-a:hover,
+a:hover {
+  color: var(--color-bg-accent);
+}
+
 a.selected {
-  color: #3038ff;
+  color: var(--color-text-selected);
 }
 
 .links-footer,
@@ -56,6 +76,11 @@ a.selected {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.aria-profile {
+  text-align: center;
+  text-transform: uppercase;
 }
 
 section {
@@ -72,22 +97,53 @@ section h1 {
   text-align: justify;
 }
 
-section.project div.artwork {
-  grid-column: 1 / span 8;
+/* project1 */
+section.project1 div.artwork {
+  grid-column: 4 / span 4;
   text-align: center;
 }
 
-section.project div.desciption {
-  grid-column: 9 / span 4;
+section.project1 div.description {
+  grid-column: 8 / span 4;
+}
+
+/* project2 */
+section.project2 div.artwork {
+  grid-column: 5 / span 7;
+  text-align: center;
+}
+
+section.project2 div.description {
+  grid-column: 1 / span 4;
+}
+
+/* project3 */
+section.project3 div.artwork {
+  grid-column: 2 / span 4;
+  text-align: center;
+}
+
+section.project3 div.description {
+  grid-column: 6 / span 5;
+}
+
+/* project4 */
+section.project4 div.artwork {
+  grid-column: 5 / span 7;
+  text-align: center;
+}
+
+section.project4 div.description {
+  grid-column: 1 / span 4;
 }
 
 /* About */
 section.about div.photo {
-  grid-column: 1 / span 6;
+  grid-column: 2 / span 5;
 }
 
 section.about div.description {
-  grid-column: 7 / span 6;
+  grid-column: 7 / span 5;
 }
 
 section img {
@@ -102,20 +158,139 @@ section img {
 section.about p {
   margin: 16px 0 16px 0;
 }
+/*about end*/
 
-section.project-alt div.artwork {
-  grid-column: 5 / span 8;
-  text-align: center;
-}
-
-section.project-alt div.desciption {
-  grid-column: 1 / span 4;
-}
-
+/* footer */
 footer a {
-  margin: 0 32px 0 32px;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+
+  margin: 0 10px 10px 10px;
+  color: var(--color-text-selected);
+}
+
+input,
+textarea {
+  width: 100%;
+  background-color: var(--color-bg-accent);
+  border: 0px;
+  border-radius: 2px;
+  padding: 8px;
+  grid-column: 3 / span 8;
+}
+
+::placeholder {
+  color: var(--color-text);
+  font-family: "Josefin Sans";
+}
+
+label {
+  display: block;
+  margin: 20px 0;
+}
+
+textarea {
+  height: 320px;
+}
+
+button {
+  background-color: var(--color-text-selected);
+  border: none;
+  font-size: 24px;
+  font-family: "Josefin Sans";
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: var(--color-bg);
+}
+
+input:focus,
+textarea:focus {
+  background-color: #97b5e7;
+}
+
+.copyright p {
+  color: #a5a5a5;
 }
 
 section.contact div.form {
-  grid-column: 4 / span 6;
+  grid-column: 3 / span 6;
+}
+
+/* Hide scroll bar */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* responsive */
+@media (max-width: 1248px) {
+  body {
+    width: auto;
+    margin: 80px 64px 48px 64px;
+  }
+
+  nav,
+  h1,
+  a {
+    font-size: 36px;
+  }
+}
+
+@media (max-width: 920px) {
+  header {
+    flex-direction: column;
+  }
+
+  nav {
+    margin-top: 16px;
+  }
+}
+
+@media (max-width: 660px) {
+  section {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px 24px;
+  }
+
+  section h1,
+  section.project1 div.artwork,
+  section.project1 div.description,
+  section.project2 div.artwork,
+  section.project2 div.description,
+  section.project3 div.artwork,
+  section.project3 div.description,
+  section.project4 div.artwork,
+  section.project4 div.description,
+  section.about div.description,
+  section.contact div.form {
+    grid-column: 1 / span 4;
+  }
+}
+
+@media (max-width: 626px) {
+  body {
+    margin: 24px;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  section.about div.photo {
+    grid-column: 1 / span 4;
+  }
+  section.about div.description h1 {
+    text-align: center;
+    font-size: 36px;
+  }
+  section.contact div.form h1 {
+    text-align: center;
+  }
 }
